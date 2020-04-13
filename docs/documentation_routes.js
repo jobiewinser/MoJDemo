@@ -66,6 +66,10 @@ router.post('/offender-form-check', function (req, res) {
 })
 
 // Examples - example offender feedback suggestions form here
+router.post('/offender-form-complete', function (req, res) {
+  res.redirect('offender-form-complete')
+})
+// Examples - example offender feedback suggestions form here
 router.post('/offender-form-date', function (req, res) {
   res.redirect('offender-form-date')
 })

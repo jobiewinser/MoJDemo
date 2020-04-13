@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block beforeContent %}
-  <div class="govuk-breadcrumbs">
+  <div class="govuk-breadcrumbs__link">
     <a href="/docs/offender-form-date" class="govuk-back-link">Back</a>
   </div>
 {% endblock %}
@@ -55,6 +55,21 @@
           </dd>
         </div>
       </dl>
+      <h2 class="govuk-heading-m">Now submit your suggestions</h2>
+      <p>By submitting this notification you are confirming that we may use the information you have provided to further improve our service.</p>
+      <details class="govuk-details" data-module="govuk-details">
+        <summary class="govuk-details__summary">
+        <span class="govuk-details__summary-text">
+          Who sees my submitted information?
+        </span>
+        </summary>
+        <div class="govuk-details__text">
+          Nobody will see this information as this is a mock form. It is not affiliated with GOV.UK in any way.
+        </div>
+      </details>
+      <a href="/docs/offender-form-complete"><button data-prevent-double-click="true" class="govuk-button" data-module="govuk-button">
+        Confirm and send
+      </button></a>
       </div>
 
     <div class="govuk-grid-column-one-third">

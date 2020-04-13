@@ -14,25 +14,25 @@
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-      <div class="govuk-form-group">
-        <fieldset class="govuk-fieldset" aria-describedby="suggestions-hint">
-          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-            <h1 class="govuk-fieldset__heading">
-              Which services would you like to be available from us in the future?
-            </h1>
-            <br>
-          </legend>
-          <span id="suggestions-hint" class="govuk-hint">
-            These may be physical or digital services.
-          </span>
-          <div class="govuk-form-group">
-            <textarea class="govuk-textarea" id="more-detail" name="more-detail" rows="5" aria-describedby="more-detail-hint"></textarea>
-          </div>
-        </fieldset>
-      </div>
-      <a href="/docs/offender-form-date"><button class="govuk-button" data-module="govuk-button">
-        Continue
-      </button></a>
+      <form action="/docs/offender-form-date" method="post" class="form">
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset" aria-describedby="suggestions-hint">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+              <h1 class="govuk-fieldset__heading">
+                Which services would you like to be available from us in the future?
+              </h1>
+              <br>
+            </legend>
+            <span id="suggestions-hint" class="govuk-hint">
+              These may be physical or digital services.
+            </span>
+            <div class="govuk-form-group">
+              <textarea class="govuk-textarea" id="suggestions-text" name="suggestions-text" rows="8" aria-describedby="more-detail-hint"> {{ data['suggestions-text']}}</textarea>
+            </div>
+          </fieldset>
+        </div>
+        <button class="govuk-button" data-module="govuk-button">Continue</button>
+      </form>
     </div>
 
     <div class="govuk-grid-column-one-third">

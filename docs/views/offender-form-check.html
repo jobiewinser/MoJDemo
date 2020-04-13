@@ -20,10 +20,10 @@
             Are you satisfied with the services we provide?
           </dt>
           <dd class="govuk-summary-list__value">
-            Yes
+            {{ data['satisfaction'] }}
           </dd>
           <dd class="govuk-summary-list__actions">
-            <a class="govuk-link" href="#">
+            <a class="govuk-link" href="/docs/offender-form-satisfaction">
               Change<span class="govuk-visually-hidden"> name</span>
             </a>
           </dd>
@@ -33,10 +33,10 @@
             Which services would you like to be available from us in the future?
           </dt>
           <dd class="govuk-summary-list__value">
-            Digital check-ins and a phone app
+            {{ data['suggestions-text'] }}
           </dd>
           <dd class="govuk-summary-list__actions">
-            <a class="govuk-link" href="#">
+            <a class="govuk-link" href="/docs/offender-form-suggestions">
               Change<span class="govuk-visually-hidden"> date of birth</span>
             </a>
           </dd>
@@ -46,10 +46,10 @@
             When would you expect your suggestions to be implemented?
           </dt>
           <dd class="govuk-summary-list__value">
-            5 January 2021
+            {{ data['suggestions-date-day']}} {{ data['suggestions-date-month']}} {{ data['suggestions-date-year']}}
           </dd>
           <dd class="govuk-summary-list__actions">
-            <a class="govuk-link" href="#">
+            <a class="govuk-link" href="/docs/offender-form-date">
               Change<span class="govuk-visually-hidden"> contact information</span>
             </a>
           </dd>

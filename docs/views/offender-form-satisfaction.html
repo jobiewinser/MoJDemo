@@ -14,36 +14,36 @@
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-      <div class="govuk-form-group">
-        <fieldset class="govuk-fieldset" aria-describedby="satisfaction-hint">
-          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-            <h1 class="govuk-fieldset__heading">
-              Are you satisfied with the services we provide?
-            </h1>
-            <br>
-          </legend>
-          <span id="satisfaction-hint" class="govuk-hint">
-            This includes any digital services available.
-          </span>
-          <div class="govuk-radios govuk-radios--inline">
-            <div class="govuk-radios__item">
-              <input class="govuk-radios__input" id="changed-name" name="changed-name" type="radio" value="yes">
-              <label class="govuk-label govuk-radios__label" for="changed-name">
-                Yes
-              </label>
+      <form action="/docs/offender-form-suggestions" method="post" class="form">
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset" aria-describedby="satisfaction-hint">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+              <h1 class="govuk-fieldset__heading">
+                Are you satisfied with the services we provide?
+              </h1>
+              <br>
+            </legend>
+            <span id="satisfaction-hint" class="govuk-hint">
+              This includes any digital services available.
+            </span>
+            <div class="govuk-radios govuk-radios--inline">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="satisfaction-yes" name="satisfaction" type="radio" value="yes" {{ checked("satisfaction", "yes") }}>
+                <label class="govuk-label govuk-radios__label" for="satisfaction-yes">
+                  Yes
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="satisfaction-no" name="satisfaction" type="radio" value="no" {{ checked("satisfaction", "no") }}>
+                <label class="govuk-label govuk-radios__label" for="satisfaction-no">
+                  No
+                </label>
+              </div>
             </div>
-            <div class="govuk-radios__item">
-              <input class="govuk-radios__input" id="changed-name-2" name="changed-name" type="radio" value="no">
-              <label class="govuk-label govuk-radios__label" for="changed-name-2">
-                No
-              </label>
-            </div>
-          </div>
-        </fieldset>
-      </div>
-      <a href="/docs/offender-form-suggestions"><button class="govuk-button" data-module="govuk-button">
-        Continue
-      </button></a>
+          </fieldset>
+        </div>
+        <button class="govuk-button" data-module="govuk-button">Continue</button>
+      </form>
     </div>
 
     <div class="govuk-grid-column-one-third">

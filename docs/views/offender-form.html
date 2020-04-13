@@ -1,0 +1,71 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBreadcrumbs({
+	  items: [
+	    {
+	      text: "Home",
+	      href: "https://www.gov.uk/"
+	    },
+        {
+        text: "Offender portal",
+        href: "https://www.gov.uk/apply-for-parole-if-youre-a-young-offender"
+        }
+	  ]
+	}) }}
+{% endblock %}
+
+{% block content %}
+
+  <h1 class="govuk-heading-xl">Offender feedback form</h1>
+
+  <div class="govuk-grid-row">
+
+    <div class="govuk-grid-column-two-thirds">
+      <p>Use this service to:</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>
+          <a>tell us if you are satisfied with the service we provide</a>
+        </li>
+        <li>
+          <a>tell us which services you'd like to be available in the future</a>
+        </li>
+        <li>
+          <a>tell us when you would expect these services to be available</a>
+        </li>
+      </ul>
+
+      <p>Using this service will:</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>
+          <a>provide us with feedback on our services</a>
+        </li>
+        <li>
+          <a>demonstrate WCAG 2.1 compliance</a>
+        </li>
+      </ul>
+
+      <a href="https://www.w3.org/TR/2018/REC-WCAG21-20180605/">Read more about WCAG 2.1.</a>
+    </div>
+
+    <div class="govuk-grid-column-one-third">
+      <h2 class="govuk-heading-m">Information for offenders</h2>
+      <ul class="govuk-list govuk-list">
+        <li>
+          <a href="www.google.com">What we expect for you.</a>
+        </li>
+        <li>
+          <a href="www.google.com">How to contact us.</a>
+        </li>
+        <li>
+          <a href="www.google.com">How to contact us.</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+{% endblock %}

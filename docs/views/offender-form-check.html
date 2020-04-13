@@ -1,0 +1,76 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  <div class="govuk-breadcrumbs">
+    <a href="/docs/offender-form-date" class="govuk-back-link">Back</a>
+  </div>
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <dl class="govuk-summary-list">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Are you satisfied with the services we provide?
+          </dt>
+          <dd class="govuk-summary-list__value">
+            Yes
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="#">
+              Change<span class="govuk-visually-hidden"> name</span>
+            </a>
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Which services would you like to be available from us in the future?
+          </dt>
+          <dd class="govuk-summary-list__value">
+            Digital check-ins and a phone app
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="#">
+              Change<span class="govuk-visually-hidden"> date of birth</span>
+            </a>
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            When would you expect your suggestions to be implemented?
+          </dt>
+          <dd class="govuk-summary-list__value">
+            5 January 2021
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="#">
+              Change<span class="govuk-visually-hidden"> contact information</span>
+            </a>
+          </dd>
+        </div>
+      </dl>
+      </div>
+
+    <div class="govuk-grid-column-one-third">
+      <h2 class="govuk-heading-m">Information for offenders</h2>
+      <ul class="govuk-list govuk-list">
+        <li>
+          <a href="www.google.com">What we expect for you.</a>
+        </li>
+        <li>
+          <a href="www.google.com">How to contact us.</a>
+        </li>
+        <li>
+          <a href="https://www.google.com/">Help with filling this form.</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+{% endblock %}

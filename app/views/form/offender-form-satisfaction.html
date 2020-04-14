@@ -1,0 +1,65 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  <div class="govuk-breadcrumbs__link">
+    <a href="/form/offender-feedback" class="govuk-back-link">Back</a>
+  </div>
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="/form/offender-form-suggestions" method="post" class="form">
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset" aria-describedby="satisfaction-hint">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+              <h1 class="govuk-fieldset__heading">
+                Are you satisfied with the services we provide?
+              </h1>
+              <br>
+            </legend>
+            <span id="satisfaction-hint" class="govuk-hint">
+              This includes any digital services available.
+            </span>
+            <div class="govuk-radios govuk-radios--inline">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="satisfaction-yes" name="satisfaction" type="radio" value="yes" {{ checked("satisfaction", "yes") }}>
+                <label class="govuk-label govuk-radios__label" for="satisfaction-yes">
+                  Yes
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="satisfaction-no" name="satisfaction" type="radio" value="no" {{ checked("satisfaction", "no") }}>
+                <label class="govuk-label govuk-radios__label" for="satisfaction-no">
+                  No
+                </label>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+        <button class="govuk-button" data-module="govuk-button">Continue</button>
+      </form>
+    </div>
+
+    <div class="govuk-grid-column-one-third">
+      <h2 class="govuk-heading-m">Information for offenders</h2>
+      <ul class="govuk-list govuk-list">
+        <li>
+          <a href="https://www.amazon.co.uk/">What we expect for you.</a>
+        </li>
+        <li>
+          <a href="https://www.youtube.com/">How to contact us.</a>
+        </li>
+        <li>
+          <a href="https://www.google.com/">Help with filling this form.</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+{% endblock %}

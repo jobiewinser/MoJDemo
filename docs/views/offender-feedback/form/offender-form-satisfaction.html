@@ -6,7 +6,7 @@
 
 {% block beforeContent %}
   <div class="govuk-breadcrumbs__link">
-    <a href="/docs/offender-form-satisfaction" class="govuk-back-link">Back</a>
+    <a href="/form/offender-feedback" class="govuk-back-link">Back</a>
   </div>
 {% endblock %}
 
@@ -14,23 +14,31 @@
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-      <form action="/docs/offender-form-date" method="post" class="form">
+      <form action="/offender-form-suggestions" method="post" class="form">
         <div class="govuk-form-group">
-          <fieldset class="govuk-fieldset" aria-describedby="suggestions-hint">
+          <fieldset class="govuk-fieldset" aria-describedby="satisfaction-hint">
             <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
               <h1 class="govuk-fieldset__heading">
-                Which services would you like to be available from us in the future?
+                Are you satisfied with the services we provide?
               </h1>
               <br>
             </legend>
-            <span id="suggestions-hint" class="govuk-hint">
-              These may be physical or digital services.
+            <span id="satisfaction-hint" class="govuk-hint">
+              This includes any digital services available.
             </span>
-            <div class="govuk-form-group">
-              <textarea class="govuk-textarea" id="suggestions-text" name="suggestions-text" rows="8"> {{ data['suggestions-text']}}</textarea>
-              <label class="govuk-label" for="suggestions-text">
-                Please enter your suggestions into the text area
-              </label>
+            <div class="govuk-radios govuk-radios--inline">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="satisfaction-yes" name="satisfaction" type="radio" value="yes" {{ checked("satisfaction", "yes") }}>
+                <label class="govuk-label govuk-radios__label" for="satisfaction-yes">
+                  Yes
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="satisfaction-no" name="satisfaction" type="radio" value="no" {{ checked("satisfaction", "no") }}>
+                <label class="govuk-label govuk-radios__label" for="satisfaction-no">
+                  No
+                </label>
+              </div>
             </div>
           </fieldset>
         </div>

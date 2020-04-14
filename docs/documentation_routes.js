@@ -45,34 +45,6 @@ router.post('/tutorials-and-examples', function (req, res) {
   res.redirect('tutorials-and-examples')
 })
 
-// Examples - example offender feedback page here
-router.post('/offender-feedback', function (req, res) {
-  res.redirect('offender-feedback')
-})
-
-// Examples - example offender feedback satisfaction form here
-router.post('/offender-form-satisfaction', function (req, res) {
-  res.redirect('offender-form-satisfaction')
-})
-
-// Examples - example offender feedback suggestions form here
-router.post('/offender-form-suggestions', function (req, res) {
-  res.redirect('offender-form-suggestions')
-})
-
-// Examples - example offender feedback suggestions form here
-router.post('/offender-form-check', function (req, res) {
-  res.redirect('offender-form-check')
-})
-
-// Examples - example offender feedback suggestions form here
-router.post('/offender-form-complete', function (req, res) {
-  res.redirect('offender-form-complete')
-})
-// Examples - example offender feedback suggestions form here
-router.post('/offender-form-date', function (req, res) {
-  res.redirect('offender-form-date')
-})
 // Example routes
 
 // Passing data into a page

@@ -1,0 +1,57 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  <div class="govuk-breadcrumbs__link">
+    <a href="/form/offender-form-satisfaction" class="govuk-back-link">Back</a>
+  </div>
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="/form/offender-form-date" method="post" class="form">
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset" aria-describedby="suggestions-hint">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+              <h1 class="govuk-fieldset__heading">
+                Which services would you like to be available from us in the future?
+              </h1>
+              <br>
+            </legend>
+            <span id="suggestions-hint" class="govuk-hint">
+              These may be physical or digital services.
+            </span>
+            <div class="govuk-form-group">
+              <textarea class="govuk-textarea" id="suggestions-text" name="suggestions-text" rows="8"> {{ data['suggestions-text']}}</textarea>
+              <label class="govuk-label" for="suggestions-text">
+                Please enter your suggestions into the text area
+              </label>
+            </div>
+          </fieldset>
+        </div>
+        <button class="govuk-button" data-module="govuk-button">Continue</button>
+      </form>
+    </div>
+
+    <div class="govuk-grid-column-one-third">
+      <h2 class="govuk-heading-m">Information for offenders</h2>
+      <ul class="govuk-list govuk-list">
+        <li>
+          <a href="https://www.amazon.co.uk/">What we expect for you.</a>
+        </li>
+        <li>
+          <a href="https://www.youtube.com/">How to contact us.</a>
+        </li>
+        <li>
+          <a href="https://www.google.com/">Help with filling this form.</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+{% endblock %}

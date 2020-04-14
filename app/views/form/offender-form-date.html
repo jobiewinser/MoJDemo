@@ -1,0 +1,76 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  <div class="govuk-breadcrumbs__link">
+    <a href="/form/offender-form-suggestions" class="govuk-back-link">Back</a>
+  </div>
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="/form/offender-form-check" method="post" class="form">
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset" role="group" aria-describedby="suggestions-date-hint">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+              <h1 class="govuk-fieldset__heading">
+                When would you expect your suggestions to be implemented?
+              </h1>
+            </legend>
+            <span id="suggestions-date-hint" class="govuk-hint">
+              For example, 12 11 2007
+            </span>
+            <div class="govuk-date-input" id="suggestions-date" name="suggestions-date">
+              <div class="govuk-date-input__item">
+                <div class="govuk-form-group">
+                  <label class="govuk-label govuk-date-input__label" for="suggestions-date-day">
+                    Day
+                  </label>
+                  <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="suggestions-date-day" name="suggestions-date-day" type="text" pattern="[0-9]*" inputmode="numeric" value="{{data['suggestions-date-day']}}">
+                </div>
+              </div>
+              <div class="govuk-date-input__item">
+                <div class="govuk-form-group">
+                  <label class="govuk-label govuk-date-input__label" for="suggestions-date-month">
+                    Month
+                  </label>
+                  <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="suggestions-date-month" name="suggestions-date-month" type="text" pattern="[0-9]*" inputmode="numeric" value="{{data['suggestions-date-month']}}">
+                </div>
+              </div>
+              <div class="govuk-date-input__item">
+                <div class="govuk-form-group">
+                  <label class="govuk-label govuk-date-input__label" for="suggestions-date-year">
+                    Year
+                  </label>
+                  <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="suggestions-date-year" name="suggestions-date-year" type="text" pattern="[0-9]*" inputmode="numeric" value="{{data['suggestions-date-year']}}">
+                </div>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+        <button class="govuk-button" data-module="govuk-button">Continue</button>
+      </form>
+    </div>
+
+    <div class="govuk-grid-column-one-third">
+      <h2 class="govuk-heading-m">Information for offenders</h2>
+      <ul class="govuk-list govuk-list">
+        <li>
+          <a href="https://www.amazon.co.uk/">What we expect for you.</a>
+        </li>
+        <li>
+          <a href="https://www.youtube.com/">How to contact us.</a>
+        </li>
+        <li>
+          <a href="https://www.google.com/">Help with filling this form.</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+{% endblock %}

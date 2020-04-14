@@ -63,7 +63,7 @@ revoke it.
 
 ## Add the Notify code to your prototype
 
-Add this code to the top of routes.js:
+Add this code to the top of app_routes.js:
 
 ```javascript
 var NotifyClient = require('notifications-node-client').NotifyClient,
@@ -100,7 +100,7 @@ example:
 
 Save this page as `email-address-page.html`.
 
-Then add this code to `routes.js`, above the line that says
+Then add this code to `app_routes.js`, above the line that says
 `module.exports = router`:
 
 ```javascript

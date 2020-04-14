@@ -20,36 +20,34 @@ const middleware = [
   require('./lib/middleware/extensions/extensions.js')
 ]
 const config = require('./app/config.js')
-const documentationRoutes = require('./docs/documentation_routes.js')
+const app_routes = require('./app/app_routes.js')
 const packageJson = require('./package.json')
-const routes = require('./app/routes.js')
 const utils = require('./lib/utils.js')
 const extensions = require('./lib/extensions/extensions.js')
 
 // Variables for v6 backwards compatibility
-// Set false by default, then turn on if we find /app/v6/routes.js
+// Set false by default, then turn on if we find /app/v6/app_routes.js
 var useV6 = false
 var v6App
 var v6Routes
 
-if (fs.existsSync('./app/v6/routes.js')) {
-  v6Routes = require('./app/v6/routes.js')
+if (fs.existsSync('./app/v6/app_routes.js')) {
+  v6Routes = require('./app/v6/app_routes.js')
   useV6 = true
 }
 
 const app = express()
-const documentationApp = express()
 
 if (useV6) {
-  console.log('/app/v6/routes.js detected - using v6 compatibility mode')
+  console.log('/app/v6/app_routes.js detected - using v6 compatibility mode')
   v6App = express()
 }
 
 // Set cookies for use in cookie banner.
 app.use(cookieParser())
-documentationApp.use(cookieParser())
+app.use(cookieParser())
 app.use(utils.handleCookies(app))
-documentationApp.use(utils.handleCookies(documentationApp))
+app.use(utils.handleCookies(app))
 
 // Set up configuration variables
 var releaseVersion = packageJson.version
@@ -60,14 +58,14 @@ var useHttps = process.env.USE_HTTPS || config.useHttps
 
 useHttps = useHttps.toLowerCase()
 
-var useDocumentation = (config.useDocumentation === 'true')
+var useApp = (config.useApp === 'true')
 
-// Promo mode redirects the root to /docs - so our landing page is docs when published on heroku
+// Promo mode redirects the root to /app - so our landing page is app when published on heroku
 var promoMode = process.env.PROMO_MODE || 'false'
 promoMode = promoMode.toLowerCase()
 
-// Disable promo mode if docs aren't enabled
-if (!useDocumentation) promoMode = 'false'
+// Disable promo mode if app aren't enabled
+if (!useApp) promoMode = 'false'
 
 // Force HTTPS on production. Do this before using basicAuth to avoid
 // asking for username/password twice (for `http`, then `https`).
@@ -112,21 +110,21 @@ app.use('/public', express.static(path.join(__dirname, '/public')))
 app.use('/node_modules/govuk-frontend', express.static(path.join(__dirname, '/node_modules/govuk-frontend')))
 
 // Set up documentation app
-if (useDocumentation) {
+if (useApp) {
   var documentationViews = [
     path.join(__dirname, '/node_modules/govuk-frontend/'),
     path.join(__dirname, '/node_modules/govuk-frontend/components'),
-    path.join(__dirname, '/docs/views/'),
+    path.join(__dirname, '/app/views/'),
     path.join(__dirname, '/lib/')
   ]
 
-  nunjucksConfig.express = documentationApp
+  nunjucksConfig.express = app
   var nunjucksDocumentationEnv = nunjucks.configure(documentationViews, nunjucksConfig)
   // Nunjucks filters
   utils.addNunjucksFilters(nunjucksDocumentationEnv)
 
   // Set views engine
-  documentationApp.set('view engine', 'html')
+  app.set('view engine', 'html')
 }
 
 // Support for parsing data in POSTs
@@ -197,7 +195,7 @@ if (useCookieSessionStore === 'true') {
 if (useAutoStoreData === 'true') {
   app.use(utils.autoStoreData)
   utils.addCheckedFunction(nunjucksAppEnv)
-  if (useDocumentation) {
+  if (useApp) {
     utils.addCheckedFunction(nunjucksDocumentationEnv)
   }
   if (useV6) {
@@ -211,14 +209,14 @@ app.post('/prototype-admin/clear-data', function (req, res) {
   res.render('prototype-admin/clear-data-success')
 })
 
-// Redirect root to /docs when in promo mode.
+// Redirect root to /app when in promo mode.
 if (promoMode === 'true') {
   console.log('Prototype Kit running in promo mode')
 
-  app.locals.cookieText = 'GOV.UK uses cookies to make the site simpler. <a href="/docs/cookies">Find out more about cookies</a>'
+  app.locals.cookieText = 'GOV.UK uses cookies to make the site simpler. <a href="/app\/cookies">Find out more about cookies</a>'
 
   app.get('/', function (req, res) {
-    res.redirect('/docs')
+    res.redirect('/app')
   })
 
   // Allow search engines to index the Prototype Kit promo site
@@ -240,27 +238,30 @@ if (promoMode === 'true') {
   })
 }
 
-// Load routes (found in app/routes.js)
-if (typeof (routes) !== 'function') {
-  console.log(routes.bind)
+// Load routes (found in app/app_routes.js)
+if (typeof (app_routes) !== 'function') {
+  console.log(app_routes.bind)
   console.log('Warning: the use of bind in routes is deprecated - please check the Prototype Kit documentation for writing routes.')
-  routes.bind(app)
+  app_routes.bind(app)
 } else {
-  app.use('/', routes)
+  app.use('/', app_routes)
 }
 
-if (useDocumentation) {
+if (useApp) {
   // Clone app locals to documentation app locals
   // Use Object.assign to ensure app.locals is cloned to prevent additions from
   // updating the original app.locals
-  documentationApp.locals = Object.assign({}, app.locals)
-  documentationApp.locals.serviceName = 'Prototype Kit'
+  appApp.locals = Object.assign({}, app.locals)
+  appApp.locals.serviceName = 'Prototype Kit'
 
-  // Create separate router for docs
-  app.use('/docs', documentationApp)
+  // Create separate router for app
+  app.use('/app', app)
 
-  // Docs under the /docs namespace
-  documentationApp.use('/', documentationRoutes)
+  // app under the /app namespace
+  app.use('/', app_routes)
+
+  // apps under the /app namespace
+  app.use('/app', app_routes)
 }
 
 if (useV6) {
@@ -271,7 +272,7 @@ if (useV6) {
   // Create separate router for v6
   app.use('/', v6App)
 
-  // Docs under the /docs namespace
+  // app under the /app namespace
   v6App.use('/', v6Routes)
 }
 
@@ -291,9 +292,9 @@ app.get(/^([^.]+)$/, function (req, res, next) {
   utils.matchRoutes(req, res, next)
 })
 
-if (useDocumentation) {
+if (useApp) {
   // Documentation  routes
-  documentationApp.get(/^([^.]+)$/, function (req, res, next) {
+  app.get(/^([^.]+)$/, function (req, res, next) {
     if (!utils.matchMdRoutes(req, res)) {
       utils.matchRoutes(req, res, next)
     }
